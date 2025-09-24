@@ -5,18 +5,18 @@ public class ValidadorEmail {
         }
 
         int atIndex = email.indexOf('@');
-        if (atIndex <= 0) { // Must have '@' and it can't be the first character
+            if (atIndex <= 0) { // Debe tener '@' y no puede ser el primer carácter
             return false;
         }
 
         int dotIndex = email.lastIndexOf('.');
-        // Dot must be after '@' and there should be at least one character between them
-        if (dotIndex < atIndex || dotIndex == atIndex + 1) {
+            // El punto debe estar después de '@' y debe haber al menos un carácter entre ellos
+            if (dotIndex < atIndex || dotIndex == atIndex + 1) {
             return false;
         }
 
-        // There must be at least two characters after the last dot
-        if (email.length() - dotIndex <= 2) {
+            // Debe haber al menos dos caracteres después del último punto
+            if (email.length() - dotIndex <= 2) {
             return false;
         }
 
