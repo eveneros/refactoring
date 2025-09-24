@@ -1,24 +1,49 @@
 public class ValidadorEmailRefac {
+
     public boolean validarEmail(String email) {
         if (email == null || email.isEmpty()) {
             return false;
         }
 
-        int atIndex = email.indexOf('@');
-            if (atIndex <= 0) { 
+        if (!contieneArroba(email)) {
             return false;
         }
 
-        int dotIndex = email.lastIndexOf('.');
-            if (dotIndex < atIndex || dotIndex == atIndex + 1) {
+        int indiceArroba = email.indexOf('@');
+        if (!arrobaEstaEnPosicionValida(indiceArroba)) {
             return false;
         }
 
-            if (email.length() - dotIndex <= 2) {
+        String dominio = obtenerDominio(email, indiceArroba);
+        if (!dominioContienePunto(dominio)) {
+            return false;
+        }
+
+        if (!dominioTieneLongitudMinima(dominio)) {
             return false;
         }
 
         return true;
+    }
+
+    private boolean contieneArroba(String email) {
+        return email.contains("@");
+    }
+
+    private boolean arrobaEstaEnPosicionValida(int indiceArroba) {
+        return indiceArroba > 0;
+    }
+
+    private String obtenerDominio(String email, int indiceArroba) {
+        return email.substring(indiceArroba + 1);
+    }
+
+    private boolean dominioContienePunto(String dominio) {
+        return dominio.contains(".");
+    }
+
+    private boolean dominioTieneLongitudMinima(String dominio) {
+        return dominio.length() >= 3;
     }
 }
 
