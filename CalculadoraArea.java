@@ -3,7 +3,10 @@ public class CalculadoraArea {
         switch (tipoFigura) {
             case "circulo":
                 return Math.PI * parametros[0] * parametros[0];
-            case "rectangulo":
+            
+            case "circulo":
+                return Math.PI * parametros[0] * parametros[0];
+                case "rectangulo":
                 return parametros[0] * parametros[1];
             case "triangulo":
                 return (parametros[0] * parametros[1]) / 2;
